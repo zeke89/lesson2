@@ -5,9 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-
+@Listeners(ExecutionListener.class)
 public class SampleTest {
 
     protected static WebDriver driver;
@@ -23,7 +24,7 @@ public class SampleTest {
     @Test
     public void openPage() {
         driver.get("https://otus.ru/");
-        logger.info("Открыта страница отус");
+        logger.info("Открыта страница Otus");
     }
 
     @AfterTest

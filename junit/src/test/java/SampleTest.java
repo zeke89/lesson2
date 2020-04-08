@@ -22,7 +22,7 @@ public class SampleTest {
     @Test
     public void openPage() {
         driver.get("https://otus.ru/");
-        logger.info("Открыта страница отус");
+        logger.info("Открыта страница Otus");
     }
 
     @After
