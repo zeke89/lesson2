@@ -1,8 +1,5 @@
 import com.google.j2objc.annotations.Property;
 
-import javax.annotation.Resource;
-
-@Resource(lookup = "data.properties")
 public class DataProperties {
 
     @Property("testUrl")

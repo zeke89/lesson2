@@ -1,3 +1,4 @@
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,19 +9,17 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-//@Listeners(ExecutionListener.class)
+@Listeners(ExecutionListener.class)
 public class SampleTest {
 
     protected static WebDriver driver;
     private Logger logger = LogManager.getLogger(SampleTest.class);
     public static DataProperties properties;
 
-
     @BeforeTest
     public void setUp() {
-        //WebDriverManager.chromedriver().setup();
-        //driver = new ChromeDriver();
-        WebDriver wd = WebDriverFactory.createNewDriver("chrome");
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
         logger.info("Драйвер поднят");
     }
 
