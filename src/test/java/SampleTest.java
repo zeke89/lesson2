@@ -127,19 +127,6 @@ public class SampleTest {
     @Test
     public void yandexMarketTest() {
 
-        //- Отфильтровать список товаров: RedMi и Xiaomi
-        //- Отсортировать список товаров по цене (от меньшей к большей)
-        //- Добавить первый в списке RedMi
-        //-- Проверить, что отобразилась плашка "Товар {имя товара} добавлен к сравнению"
-        //- Добавить первый в списке Xiaomi
-        //-- Проверить, что отобразилась плашка "Товар {имя товара} добавлен к сравнению"
-        //- Перейти в раздел Сравнение
-        //-- Проверить, что в списке товаров 2 позиции
-        //- Нажать на опцию "все характеристики"
-        //-- Проверить, что в списке характеристик появилась позиция "Операционная система"
-        //- Нажать на опцию "различающиеся характеристики"
-        //-- Проверить, что позиция "Операционная система" не отображается в списке характеристик
-
         //-- Открыть в Chrome сайт Яндекс.Маркет - раздел "Мобильные телефоны"
         driver.navigate().to("https://market.yandex.ru/catalog--mobilnye-telefony/54726/list?local-offers-first=0&onstock=1");
         WebElement searchInput = driver.findElement(By.xpath("//input[@id = 'header-search']"));
@@ -150,17 +137,16 @@ public class SampleTest {
         //-- Отсортировать список товаров по цене (от меньшей к большей)
         WebElement sortByPrice = driver.findElement(By.xpath("//a[contains(text(), 'по цене')]"));
         sortByPrice.click();
+        sortByPrice.click();
         //-- Добавить первый в списке RedMi
         WebElement comporateButton = driver.findElements(By.xpath("//div[contains(@class, 'n-user-lists_type_compare')]")).get(0);
         comporateButton.click();
         //-- Проверить, что отобразилась плашка "Товар {имя товара} добавлен к сравнению"
-        WebElement comporateNotification = driver.findElement(By.xpath("//div[contains(@class, 'popup-informer__title')]"));
-        String comporateText = comporateNotification.getText();
-        Assert.assertSame("Товар {имя товара} добавлен к сравнению", comporateNotification.getText());
+        WebElement comporateNotification = driver.findElement(By.xpath("//div[contains(@class, 'popup-informer__details')]"));
+        Assert.assertEquals( "Всего в списке 1 товар из категории Мобильные телефоны", comporateNotification.getText());
         // Закрыть попап со сравнением
         WebElement closeComparatePopUp = driver.findElement(By.xpath("//div[contains(@class,'popup-informer__close')]"));
         closeComparatePopUp.click();
-
 
         //- Отфильтровать список товаров: Xiaomi
         searchInput.sendKeys("Xiaomi");
@@ -170,7 +156,7 @@ public class SampleTest {
         //- Добавить первый в списке Xiaomi
         comporateButton.click();
         //-- Проверить, что отобразилась плашка "Товар {имя товара} добавлен к сравнению"
-        Assert.assertSame("Товар {имя товара} добавлен к сравнению", comporateNotification.getText());
+        Assert.assertEquals( "Всего в списке 2 товар из категории Мобильные телефоны", comporateNotification.getText());
         // Закрыть попап со сравнением
         closeComparatePopUp.click();
 
