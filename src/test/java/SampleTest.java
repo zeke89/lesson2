@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -29,7 +30,8 @@ public class SampleTest {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
         //logger.info("Драйвер поднят");
     }
 
@@ -122,62 +124,6 @@ public class SampleTest {
         driver.findElement(By.xpath("//button[contains(text(),'Change message')]")).click();
         String text2 = alertBox.getText();
         Assert.assertNotEquals(text1, text2);
-    }
-
-    @Test
-    public void yandexMarketTest() {
-
-        //-- Открыть в Chrome сайт Яндекс.Маркет - раздел "Мобильные телефоны"
-        driver.navigate().to("https://market.yandex.ru/catalog--mobilnye-telefony/54726/list?local-offers-first=0&onstock=1");
-        WebElement searchInput = driver.findElement(By.xpath("//input[@id = 'header-search']"));
-        //-- Отфильтровать список товаров: RedMi
-        searchInput.sendKeys("Redmi");
-        WebElement searchButton = driver.findElement(By.xpath("//button[@type = 'submit']"));
-        searchButton.click();
-        //-- Отсортировать список товаров по цене (от меньшей к большей)
-        WebElement sortByPrice = driver.findElement(By.xpath("//a[contains(text(), 'по цене')]"));
-        sortByPrice.click();
-        sortByPrice.click();
-        //-- Добавить первый в списке RedMi
-        WebElement comporateButton = driver.findElements(By.xpath("//div[contains(@class, 'n-user-lists_type_compare')]")).get(0);
-        comporateButton.click();
-        //-- Проверить, что отобразилась плашка "Товар {имя товара} добавлен к сравнению"
-        WebElement comporateNotification = driver.findElement(By.xpath("//div[contains(@class, 'popup-informer__details')]"));
-        Assert.assertEquals( "Всего в списке 1 товар из категории Мобильные телефоны", comporateNotification.getText());
-        // Закрыть попап со сравнением
-        WebElement closeComparatePopUp = driver.findElement(By.xpath("//div[contains(@class,'popup-informer__close')]"));
-        closeComparatePopUp.click();
-
-        //- Отфильтровать список товаров: Xiaomi
-        searchInput.sendKeys("Xiaomi");
-        searchButton.click();
-        //- Отсортировать список товаров по цене (от меньшей к большей)
-        sortByPrice.click();
-        //- Добавить первый в списке Xiaomi
-        comporateButton.click();
-        //-- Проверить, что отобразилась плашка "Товар {имя товара} добавлен к сравнению"
-        Assert.assertEquals( "Всего в списке 2 товар из категории Мобильные телефоны", comporateNotification.getText());
-        // Закрыть попап со сравнением
-        closeComparatePopUp.click();
-
-        //- Перейти в раздел Сравнение
-        WebElement compareButton = driver.findElement(By.xpath("//a[contains(@href,'compare?track=head')]"));
-        compareButton.click();
-
-        //-- Проверить, что в списке товаров 2 позиции
-        Assert.assertEquals(driver.findElements(By.xpath("//div[contains(@class, 'n-compare-cell_js_inited')]")).size(), 2);
-        //- Нажать на опцию "все характеристики"
-        WebElement allComparate = driver.findElement(By.xpath("//span[@class =  'link n-compare-show-controls__all']"));
-        allComparate.click();
-        //-- Проверить, что в списке характеристик появилась позиция "Операционная система"
-        WebElement osSystem = driver.findElement(By.xpath("//div[@class='card-body']//ngb-alert[contains(text(), 'Операционная система')]"));
-        ExpectedConditions.not(invisibilityOf(osSystem));
-        //- Нажать на опцию "различающиеся характеристики"
-        allComparate.click();
-        //-- Проверить, что позиция "Операционная система" не отображается в списке характеристик
-        ExpectedConditions.invisibilityOf(osSystem);
-
-        //logger.info("Открыта страница Otus");
     }
 
     @AfterTest
