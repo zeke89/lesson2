@@ -1,20 +1,14 @@
-
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOf;
@@ -124,6 +118,18 @@ public class SampleTest {
         driver.findElement(By.xpath("//button[contains(text(),'Change message')]")).click();
         String text2 = alertBox.getText();
         Assert.assertNotEquals(text1, text2);
+    }
+
+    @Test
+    public void alertExample(){
+        driver.get("https://www.tutorialspoint.com/javascript/javascript_dialog_boxes.htm");
+        // WebElement alerteframe = driver.findElement(By.cssSelector("[src='/javascript/src/alert_dialog_box.htm']"));
+        driver.switchTo().frame(driver.findElement(By.cssSelector("[src='/javascript/src/alert_dialog_box.htm']")));
+        driver.findElement(By.cssSelector("input")).click();
+        Alert alert = driver.switchTo().alert();
+        String alertText = alert.getText();
+        System.out.println(alertText);
+        alert.accept();
     }
 
     @AfterTest
