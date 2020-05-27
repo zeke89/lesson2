@@ -34,6 +34,14 @@ public class PersonalCabinetPage extends BasePage {
     private By genderSelect = By.xpath("//select[@id = 'id_gender']");
     private By genderSelectValue = By.xpath("//option[text() = 'Мужской']");
     private By companyNameInput = By.xpath("//input[@id = 'id_company']");
+    private By workNameInput = By.xpath("//input[@id = 'id_work']");
+
+    private By addExperienceButton = By.xpath("//div[@class= 'js-formset-items']");
+    private By experienceLangSelect = By.xpath("//select[@id= 'id_experience-1-experience']");
+    private By experienceLangSelectValue = By.xpath("//option[text() = 'Java']");
+    private By experienceLevelSelect = By.xpath("//select[@id= 'id_experience-1-level']");
+    private By experienceLevelSelectValue = By.xpath("//option[text() = '1 год']");
+
 
     private By saveButton = By.xpath("//button[contains(@class, 'lk-cv-action-buttons__button_gray js-disable-on-submit')]");
 
@@ -142,6 +150,27 @@ public class PersonalCabinetPage extends BasePage {
         driver.findElement(companyNameInput).sendKeys(companyName);
     }
 
+    public void addWork(String workName) {
+        driver.findElement(workNameInput).clear();
+        driver.findElement(workNameInput).sendKeys(workName);
+    }
+
+    //Experience
+
+    public void clickAddExperience() {
+        driver.findElement(addExperienceButton).click();
+    }
+
+    public void chooseExperienceLang() {
+        driver.findElement(experienceLangSelect).click();
+        driver.findElement(experienceLangSelectValue).click();
+    }
+
+    public void chooseExperienceLevel() {
+        driver.findElement(experienceLevelSelect).click();
+        driver.findElement(experienceLevelSelectValue).click();
+    }
+    
     //Safe data
 
     public void clickSaveButton() {

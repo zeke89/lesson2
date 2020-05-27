@@ -72,6 +72,9 @@ public class OtusAuthTest extends BaseTest {
         personalCabinetPage.enterVkContact("test2");
         personalCabinetPage.clickSaveButton();
 
+        personalCabinetPage.chooseGender();
+        personalCabinetPage.addCompany("РУ КВАД КОД");
+        personalCabinetPage.addWork("QA engineer");
 
 
 
