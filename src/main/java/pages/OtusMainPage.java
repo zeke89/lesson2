@@ -5,14 +5,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-public class OtusMainPage extends AbstractPage {
+public class OtusMainPage extends BasePage {
 
     private static final String URL = "https://otus.ru";
 
     private By loginButton = By.xpath("//button[@data-modal-id='new-log-reg']");
-    private By emailInput = By.xpath("//input[@type='text'][0]");
-    private By passwordInput = By.xpath("//input[@type='password']");
-    private By loginSubmitButton = By.xpath("//button[contains(@class,'new-button_blue new-button_md')][0]");
+    private By emailInput = By.xpath("//div[@class='new-log-reg__body']//input[@name='email']");
+    private By passwordInput = By.xpath("//div[@class='new-log-reg__body']//input[@name='password']");
+
+    private WebElement loginSubmitButton = driver.findElement(By.xpath("//div[@class='new-log-reg__body']//button[@type = 'submit']"));
+    //private By loginSubmitButton = By.xpath("//div[@class='new-log-reg__body']//button[@type = 'submit']");
     private By menuButton = By.xpath("//div[@class = 'header2-menu__item-wrapper header2-menu__item-wrapper__username']");
     private By personalCabinet = By.xpath("//div[@class = 'header2-menu__dropdown-text']");
 
@@ -38,7 +40,7 @@ public class OtusMainPage extends AbstractPage {
     }
 
     public void clickSubmitLogin() {
-        driver.findElement(loginSubmitButton).click();
+        loginSubmitButton.click();
     }
 
     public void openMenu() {

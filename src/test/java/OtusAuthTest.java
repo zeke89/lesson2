@@ -1,21 +1,18 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.OtusMainPage;
 import pages.PersonalCabinetPage;
 
 import java.util.concurrent.TimeUnit;
 
-@Listeners(ExecutionListener.class)
+//@Listeners(ExecutionListener.class)
 public class OtusAuthTest extends BaseTest {
 
     protected static WebDriver driver;
-    private Logger logger = LogManager.getLogger(SampleTest.class);
+    //private Logger logger = LogManager.getLogger(SampleTest.class);
 
     @BeforeTest
     public void setUp() {
@@ -23,7 +20,7 @@ public class OtusAuthTest extends BaseTest {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        logger.info("Драйвер поднят");
+        //logger.info("Драйвер поднят");
     }
 
     @Test
@@ -42,13 +39,29 @@ public class OtusAuthTest extends BaseTest {
 - Проверить, что в разделе "О себе" отображаются указанные ранее данные
          */
         OtusMainPage otusMainPage = new OtusMainPage(driver);
-        otusMainPage.open().clickLoginButton();
+        otusMainPage.open();
+        otusMainPage.clickLoginButton();
         otusMainPage.enterEmail();
         otusMainPage.enterPassword();
         otusMainPage.clickSubmitLogin();
+        otusMainPage.openMenu();
         otusMainPage.clickPersonalLink();
 
         PersonalCabinetPage personalCabinetPage = new PersonalCabinetPage(driver);
+
+        personalCabinetPage.addFirstName("Евгений");
+        personalCabinetPage.addLastName("Голубцов");
+        personalCabinetPage.addFirstNameLatin("Eugene");
+        personalCabinetPage.addLastNameLatin("Golubcov");
+        personalCabinetPage.addBlogName("zeke");
+        personalCabinetPage.addDateOfBirth("29.12.1989");
+
+        personalCabinetPage.chooseCountrySelect();
+        personalCabinetPage.chooseCitySelect();
+        personalCabinetPage.chooseEnglishLevel();
+        personalCabinetPage.chooseRelocated();
+        personalCabinetPage.chooseAlignment();
+
         personalCabinetPage.addNewContact();
         personalCabinetPage.openSelectContact();
         personalCabinetPage.chooseFacebookContact();
@@ -57,6 +70,10 @@ public class OtusAuthTest extends BaseTest {
         personalCabinetPage.openSelectContact();
         personalCabinetPage.chooseVkContact();
         personalCabinetPage.enterVkContact("test2");
+        personalCabinetPage.clickSaveButton();
+
+
+
 
         //stop();
 
