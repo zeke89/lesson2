@@ -53,7 +53,6 @@ public class PersonalCabinetPage extends BasePage {
     private By saveButton = By.xpath("//button[contains(@class, 'lk-cv-action-buttons__button_gray js-disable-on-submit')]");
     private By messageNotification = By.xpath("//span[@class = 'messages']");
 
-
     public PersonalCabinetPage(WebDriver driver) {
         super(driver);
     }
@@ -163,7 +162,7 @@ public class PersonalCabinetPage extends BasePage {
 
     public void enterVkContact(String vkContact) {
         wait.until(ExpectedConditions.elementToBeClickable(vkInput));
-        driver.findElement(facebookInput).clear();
+        driver.findElement(vkInput).clear();
         driver.findElement(vkInput).sendKeys(vkContact);
     }
 
@@ -280,24 +279,35 @@ public class PersonalCabinetPage extends BasePage {
 
     //Check Contact Info
 
-    public void checkFacebookSelect(String facebookInputVal) {
-        assertEquals(trim(getInnerTextField(driver.findElement(facebookInput))),  facebookInputVal, "Facebook not equal " + facebookInputVal);
+    public void checkFacebookContact(String facebookContactVal) {
+        assertEquals(getValueTextField(driver.findElement(facebookInput)),  facebookContactVal, "Facebook contact not equal " + facebookContactVal);
     }
 
+    public void checkVkContact(String vkContactVal) {
+        assertEquals(getValueTextField(driver.findElement(vkInput)),  vkContactVal, "Vk contact not equal " + vkContactVal);
+    }
 
+    // Check Other Info
 
-//
-//    public void chooseAlignment() {
-//        wait.until(ExpectedConditions.elementToBeClickable(alignmentCheckbox));
-//        driver.findElement(alignmentCheckbox).click();
-//    }
+    public void checkGenderSelect(String genderSelectVal) {
+        assertEquals(trim(getInnerTextField(driver.findElement(genderSelectValue))), genderSelectVal, "Gender not equal " + genderSelectVal);
+    }
 
+    public void checkCompanyNameInput(String companyName) {
+        assertEquals(getValueTextField(driver.findElement(companyNameInput)),  companyName, "Company  not equal " + companyName);
+    }
 
-//    public void checkFacebookContact(String facebookContact) {
-//        assertEquals(facebookContact, driver.findElement(facebookInput).getText(), "Facebook nike not equal " + facebookContact);
-//    }
-//
-//    public void checkVkContact(String vkContact) {
-//        assertEquals(vkContact, driver.findElement(vkInput).getText(), "Vk nike not equal " + facebookContact);
-//    }
+    public void checkWorkNameInput(String workName) {
+        assertEquals(getValueTextField(driver.findElement(workNameInput)),  workName, "Work  not equal " + workName);
+    }
+
+    // Check Experience Info
+
+    public void checkExperienceLangSelect(String experienceLangSelectVal) {
+        assertEquals(trim(getInnerTextField(driver.findElement(experienceLangSelectValue))), experienceLangSelectVal, "Experience Lang not equal " + experienceLangSelectVal);
+    }
+
+    public void checkExperienceLevelSelect(String experienceLevelSelectVal) {
+        assertEquals(trim(getInnerTextField(driver.findElement(experienceLevelSelectValue))), experienceLevelSelectVal, "Experience Lang not equal " + experienceLevelSelectVal);
+    }
 }

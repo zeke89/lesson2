@@ -6,23 +6,11 @@ public class PageObjectTest extends BaseTest {
 
     @Test
     public void checkPersonalCabinetTest() {
-        /*
-        Шаги теста:
-- Открыть https://otus.ru
-- Авторизоваться на сайте
-- Войти в личный кабинет
-- В разделе "О себе" заполнить все поля "Личные данные" и добавить не менее двух контактов
-- Нажать сохранить
-- Открыть https://otus.ru в "чистом браузере"
-- Авторизоваться на сайе
-- Войти в личный кабинет
-- Проверить, что в разделе "О себе" отображаются указанные ранее данные
-         */
         OtusMainPage otusMainPage = new OtusMainPage(driver);
         otusMainPage.open();
         otusMainPage.clickLoginButton();
-        otusMainPage.enterEmail();
-        otusMainPage.enterPassword();
+        otusMainPage.enterEmail("test@test.ru");
+        otusMainPage.enterPassword("qwerty");
         otusMainPage.clickSubmitLogin();
         otusMainPage.openMenu();
         otusMainPage.clickPersonalLink();
@@ -42,7 +30,6 @@ public class PageObjectTest extends BaseTest {
         personalCabinetPage.chooseRelocated();
         personalCabinetPage.chooseAlignment();
 
-        //personalCabinetPage.addNewContact();
         personalCabinetPage.openSelectFirstContact();
         personalCabinetPage.chooseFacebookContact();
         personalCabinetPage.enterFacebookContact("test1");
@@ -67,8 +54,8 @@ public class PageObjectTest extends BaseTest {
         OtusMainPage otusMainPage2 = new OtusMainPage(driver);
         otusMainPage2.open();
         otusMainPage2.clickLoginButton();
-        otusMainPage2.enterEmail();
-        otusMainPage2.enterPassword();
+        otusMainPage2.enterEmail("test@test.ru");
+        otusMainPage2.enterPassword("qwerty");
         otusMainPage2.clickSubmitLogin();
         otusMainPage2.openMenu();
         otusMainPage2.clickPersonalLink();
@@ -87,9 +74,14 @@ public class PageObjectTest extends BaseTest {
         personalCabinetPage2.checkEnglishLevel("Средний (Intermediate)");
         personalCabinetPage2.checkAlignment("Полный день");
 
-        personalCabinetPage2.checkFacebookSelect("Facebook");
+        personalCabinetPage2.checkFacebookContact("test1");
+        personalCabinetPage2.checkVkContact("test2");
 
-//        personalCabinetPage2.checkFacebookContact("test1");
-//        personalCabinetPage2.checkVkContact("test2");
+        personalCabinetPage2.checkGenderSelect("Мужской");
+        personalCabinetPage2.checkCompanyNameInput("РУ КВАД КОД");
+        personalCabinetPage2.checkWorkNameInput("QA engineer");
+
+        personalCabinetPage2.checkExperienceLangSelect("Java");
+        personalCabinetPage2.checkExperienceLevelSelect("1 год");
     }
 }
