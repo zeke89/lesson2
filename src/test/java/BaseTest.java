@@ -1,14 +1,19 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
+//@Listeners(ExecutionListener.class)
 public class BaseTest {
 
-    public WebDriver driver;
+    protected static WebDriver driver;
+    //private Logger logger = LogManager.getLogger(SampleTest.class);
 
     @BeforeTest
-    public void start() {
+    public void startBrowser() {
 
 //        DesiredCapabilities caps = new DesiredCapabilities();
 //        caps.setCapability("unexpectedAlertBehaviour", "accept");
@@ -16,18 +21,16 @@ public class BaseTest {
 //        opt.addArguments("start-fullscreen");
 //        opt.addArguments("start-maximized");
 //        caps.setCapability(ChromeOptions.CAPABILITY, opt);
-//
-//        driver = new ChromeDriver(caps);
-//        System.out.println(((HasCapabilities) driver).getCapabilities());
+
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+        //logger.info("Драйвер поднят");
     }
 
     @AfterTest
-    public void stop() {
+    public void stopBrowser() {
         driver.quit();
-    }
-
-    @Test
-    public void testOtus() {
-        driver.get("https://otus.ru");
     }
 }
