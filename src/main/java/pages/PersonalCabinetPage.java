@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static jdk.nashorn.internal.objects.NativeString.trim;
 import static org.testng.Assert.assertEquals;
 
 public class PersonalCabinetPage extends BasePage {
@@ -23,7 +24,7 @@ public class PersonalCabinetPage extends BasePage {
 
     private By countrySelect = By.xpath("//input[@name = 'country']/../div");
     private By countrySelectValue = By.xpath("//button[@title = 'Россия']");
-    private By citySelect = By.xpath("//input[@name = 'city']/following-sibling::div");
+    private By citySelect = By.xpath("//input[@name = 'city']/../div");
     private By citySelectValue = By.xpath("//button[@title = 'Санкт-Петербург']");
     private By englishLevelSelect = By.xpath("//input[@name = 'english_level']/../div");
     private By englishLevelSelectValue = By.xpath("//button[@title = 'Средний (Intermediate)']");
@@ -156,11 +157,13 @@ public class PersonalCabinetPage extends BasePage {
 
     public void enterFacebookContact(String facebookContact) {
         wait.until(ExpectedConditions.elementToBeClickable(facebookInput));
+        driver.findElement(facebookInput).clear();
         driver.findElement(facebookInput).sendKeys(facebookContact);
     }
 
     public void enterVkContact(String vkContact) {
         wait.until(ExpectedConditions.elementToBeClickable(vkInput));
+        driver.findElement(facebookInput).clear();
         driver.findElement(vkInput).sendKeys(vkContact);
     }
 
@@ -222,9 +225,10 @@ public class PersonalCabinetPage extends BasePage {
         return webElement.getAttribute("value");
     }
 
-    public String getInnerTextTextField(WebElement webElement){
+    public String getInnerTextField(WebElement webElement){
         return webElement.getAttribute("innerText");
     }
+
 
     public String getValueCheckField(WebElement webElement){
         return webElement.getAttribute("checked");
@@ -258,28 +262,30 @@ public class PersonalCabinetPage extends BasePage {
 
     //Check Main Info
 
-    public void chooseCountrySelect(String countrySelectVal) {
-        assertEquals(getInnerTextTextField(driver.findElement(countrySelectValue)), countrySelectVal, "Country not equal " + countrySelectVal);
+    public void checkCountrySelect(String countrySelectVal) {
+        assertEquals(trim(getInnerTextField(driver.findElement(countrySelectValue))), countrySelectVal, "Country not equal " + countrySelectVal);
     }
 
-//    public void chooseCitySelect() {
-//        wait.until(ExpectedConditions.elementToBeClickable(citySelect));
-//        driver.findElement(citySelect).click();
-//        ExpectedConditions.elementToBeClickable(citySelectValue);
-//        driver.findElement(citySelectValue).click();
-//    }
-//
-//    public void chooseEnglishLevel() {
-//        wait.until(ExpectedConditions.elementToBeClickable(englishLevelSelect));
-//        driver.findElement(englishLevelSelect).click();
-//        wait.until(ExpectedConditions.elementToBeClickable(englishLevelSelectValue));
-//        driver.findElement(englishLevelSelectValue).click();
-//    }
-//
-//    public void chooseRelocated() {
-//        wait.until(ExpectedConditions.elementToBeClickable(relocatedRadioButton));
-//        driver.findElement(relocatedRadioButton).click();
-//    }
+    public void checkCitySelect(String citySelectVal) {
+        assertEquals(trim(getInnerTextField(driver.findElement(citySelectValue))), citySelectVal, "City not equal " + citySelectVal);
+    }
+
+    public void checkEnglishLevel(String englishLevelSelectVal) {
+        assertEquals(trim(getInnerTextField(driver.findElement(englishLevelSelectValue))), englishLevelSelectVal, "English level not equal " + englishLevelSelectVal);
+    }
+
+    public void checkAlignment(String alignmentCheckboxVal) {
+        assertEquals(getValueCheckField(driver.findElement(alignmentCheckbox)), alignmentCheckboxVal, "Aligment not equal " + alignmentCheckboxVal);
+    }
+
+    //Check Contact Info
+
+    public void checkFacebookSelect(String facebookInputVal) {
+        assertEquals(trim(getInnerTextField(driver.findElement(facebookInput))),  facebookInputVal, "Facebook not equal " + facebookInputVal);
+    }
+
+
+
 //
 //    public void chooseAlignment() {
 //        wait.until(ExpectedConditions.elementToBeClickable(alignmentCheckbox));

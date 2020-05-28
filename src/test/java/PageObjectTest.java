@@ -82,7 +82,12 @@ public class PageObjectTest extends BaseTest {
         personalCabinetPage2.checkBlogNameInput("zeke");
         personalCabinetPage2.checkDateOfBirthInput("29.12.1989");
 
-        personalCabinetPage.chooseCountrySelect("Россия");
+        personalCabinetPage2.checkCountrySelect("Россия");
+        personalCabinetPage2.checkCitySelect("Санкт-Петербург");
+        personalCabinetPage2.checkEnglishLevel("Средний (Intermediate)");
+        personalCabinetPage2.checkAlignment("Полный день");
+
+        personalCabinetPage2.checkFacebookSelect("Facebook");
 
 //        personalCabinetPage2.checkFacebookContact("test1");
 //        personalCabinetPage2.checkVkContact("test2");
