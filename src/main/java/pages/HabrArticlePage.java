@@ -12,7 +12,7 @@ public class HabrArticlePage extends BasePage {
     private static final String URL = "https://habr.com/ru/company";
     private final Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
 
-    private By commentsTitle = By.xpath("//h2[@class = 'comments-section__head-title']");
+    private final By commentsTitle = By.xpath("//h2[@class = 'comments-section__head-title']");
 
     public HabrArticlePage(WebDriver driver) {
         super(driver);
@@ -24,6 +24,6 @@ public class HabrArticlePage extends BasePage {
     }
 
     public void checkCommentsTitle(String commentsTitleText) {
-        assertEquals(driver.findElement(commentsTitle).getText(), commentsTitleText, "Title is not " + commentsTitleText);
+        assertEquals((driver.findElement(commentsTitle).getText()).substring(0,11), commentsTitleText, "Title is not " + commentsTitleText);
     }
 }
