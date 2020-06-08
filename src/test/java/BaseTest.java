@@ -1,6 +1,7 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
@@ -9,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 //@Listeners(ExecutionListener.class)
 public class BaseTest {
 
+    @Autowired
     protected static WebDriver driver;
     //private Logger logger = LogManager.getLogger(SampleTest.class);
 

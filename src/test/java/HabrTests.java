@@ -1,11 +1,25 @@
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.testng.annotations.Test;
 import pages.*;
 
+import java.util.Random;
+
+@ActiveProfiles("dev")
+@SpringBootTest(
+        classes = SpringApp.class
+)
 public class HabrTests extends BaseTest {
+
+    final Random random = new Random();
+
+    @Autowired
+    private HabrMainPage habrMainPage;
 
     @Test     //test1
     public void checkOpenMainPage() {
-        HabrMainPage habrMainPage = new HabrMainPage(driver);
+        habrMainPage = new HabrMainPage(driver);
         habrMainPage.open();
         habrMainPage.checkLogo();
     }
@@ -149,7 +163,7 @@ public class HabrTests extends BaseTest {
         HabrMainPage habrMainPage = new HabrMainPage(driver);
         habrMainPage.open();
         HabrRegisterPage habrRegisterPage = habrMainPage.clickRegisterButton();
-        habrRegisterPage.enterEmail("golubcov.e+test1@gmail.com");
+        habrRegisterPage.enterEmail("golubcov.e+test" + random.nextInt(10) + "@gmail.com");
         habrRegisterPage.enterNick("zeke123454");
         habrRegisterPage.enterPassword("qwerty123");
         habrRegisterPage.enterRepeatPassword("qwerty123");

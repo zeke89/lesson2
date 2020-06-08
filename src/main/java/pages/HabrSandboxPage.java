@@ -4,9 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.stereotype.Component;
 
 import static org.testng.Assert.assertEquals;
 
+@Component
 public class HabrSandboxPage extends BasePage {
 
     private static final String URL = "https://habr.com/ru/sandbox/add/";
