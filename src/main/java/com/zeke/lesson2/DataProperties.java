@@ -1,3 +1,5 @@
+package com.zeke.lesson2;
+
 import com.google.j2objc.annotations.Property;
 
 public class DataProperties {

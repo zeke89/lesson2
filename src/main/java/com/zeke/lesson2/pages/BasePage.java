@@ -1,4 +1,4 @@
-package pages;
+package com.zeke.lesson2.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;

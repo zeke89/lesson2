@@ -1,8 +1,10 @@
+package com.zeke.lesson2;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.testng.annotations.Test;
-import pages.*;
+import com.zeke.lesson2.pages.*;
 
 import java.util.Random;
 

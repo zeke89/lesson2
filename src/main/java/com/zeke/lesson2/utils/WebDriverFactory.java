@@ -1,4 +1,4 @@
-package utils;
+package com.zeke.lesson2.utils;
 
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;

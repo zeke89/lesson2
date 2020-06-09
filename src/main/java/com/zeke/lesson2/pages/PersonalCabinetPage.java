@@ -1,4 +1,4 @@
-package pages;
+package com.zeke.lesson2.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static jdk.nashorn.internal.objects.NativeString.trim;
 import static org.testng.Assert.assertEquals;
 
 public class PersonalCabinetPage extends BasePage {
@@ -262,15 +261,15 @@ public class PersonalCabinetPage extends BasePage {
     //Check Main Info
 
     public void checkCountrySelect(String countrySelectVal) {
-        assertEquals(trim(getInnerTextField(driver.findElement(countrySelectValue))), countrySelectVal, "Country not equal " + countrySelectVal);
+        assertEquals(getInnerTextField(driver.findElement(countrySelectValue)).trim(), countrySelectVal, "Country not equal " + countrySelectVal);
     }
 
     public void checkCitySelect(String citySelectVal) {
-        assertEquals(trim(getInnerTextField(driver.findElement(citySelectValue))), citySelectVal, "City not equal " + citySelectVal);
+        assertEquals(getInnerTextField(driver.findElement(citySelectValue)).trim(), citySelectVal, "City not equal " + citySelectVal);
     }
 
     public void checkEnglishLevel(String englishLevelSelectVal) {
-        assertEquals(trim(getInnerTextField(driver.findElement(englishLevelSelectValue))), englishLevelSelectVal, "English level not equal " + englishLevelSelectVal);
+        assertEquals(getInnerTextField(driver.findElement(englishLevelSelectValue)).trim(), englishLevelSelectVal, "English level not equal " + englishLevelSelectVal);
     }
 
     public void checkAlignment(String alignmentCheckboxVal) {
@@ -290,7 +289,7 @@ public class PersonalCabinetPage extends BasePage {
     // Check Other Info
 
     public void checkGenderSelect(String genderSelectVal) {
-        assertEquals(trim(getInnerTextField(driver.findElement(genderSelectValue))), genderSelectVal, "Gender not equal " + genderSelectVal);
+        assertEquals(getInnerTextField(driver.findElement(genderSelectValue)).trim(), genderSelectVal, "Gender not equal " + genderSelectVal);
     }
 
     public void checkCompanyNameInput(String companyName) {
@@ -304,10 +303,10 @@ public class PersonalCabinetPage extends BasePage {
     // Check Experience Info
 
     public void checkExperienceLangSelect(String experienceLangSelectVal) {
-        assertEquals(trim(getInnerTextField(driver.findElement(experienceLangSelectValue))), experienceLangSelectVal, "Experience Lang not equal " + experienceLangSelectVal);
+        assertEquals(getInnerTextField(driver.findElement(experienceLangSelectValue)).trim(), experienceLangSelectVal, "Experience Lang not equal " + experienceLangSelectVal);
     }
 
     public void checkExperienceLevelSelect(String experienceLevelSelectVal) {
-        assertEquals(trim(getInnerTextField(driver.findElement(experienceLevelSelectValue))), experienceLevelSelectVal, "Experience Lang not equal " + experienceLevelSelectVal);
+        assertEquals(getInnerTextField(driver.findElement(experienceLevelSelectValue)).trim(), experienceLevelSelectVal, "Experience Lang not equal " + experienceLevelSelectVal);
     }
 }

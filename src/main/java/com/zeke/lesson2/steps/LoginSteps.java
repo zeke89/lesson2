@@ -1,4 +1,4 @@
-package steps;
+package com.zeke.lesson2.steps;
 
 public class LoginSteps {
 
