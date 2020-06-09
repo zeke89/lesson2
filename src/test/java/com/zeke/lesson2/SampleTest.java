@@ -1,3 +1,6 @@
+package com.zeke.lesson2;
+
+import com.zeke.lesson2.DataProperties;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,11 +16,11 @@ import java.util.concurrent.TimeUnit;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOf;
 
-//@Listeners(ExecutionListener.class)
+//@Listeners(com.zeke.lesson2.ExecutionListener.class)
 public class SampleTest {
 
     protected static WebDriver driver;
-    //private Logger logger = LogManager.getLogger(SampleTest.class);
+    //private Logger logger = LogManager.getLogger(com.zeke.lesson2.SampleTest.class);
     public static DataProperties properties;
 
     @BeforeTest

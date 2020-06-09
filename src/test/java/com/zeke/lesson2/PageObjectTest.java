@@ -1,6 +1,8 @@
+package com.zeke.lesson2;
+
 import org.testng.annotations.Test;
-import pages.OtusMainPage;
-import pages.PersonalCabinetPage;
+import com.zeke.lesson2.pages.OtusMainPage;
+import com.zeke.lesson2.pages.PersonalCabinetPage;
 
 public class PageObjectTest extends BaseTest {
 
