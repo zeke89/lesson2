@@ -1,10 +1,10 @@
 package com.zeke.lesson2;
 
+import com.zeke.lesson2.pages.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.testng.annotations.Test;
-import com.zeke.lesson2.pages.*;
 
 import java.util.Random;
 
@@ -67,8 +67,8 @@ public class HabrTests extends BaseTest {
         HabrMainPage habrMainPage = new HabrMainPage(driver);
         habrMainPage.open();
         HabrLoginPage habrLoginPage = habrMainPage.clickLoginButton();
-        habrLoginPage.enterEmail("golubcov.e@gmail.com");
-        habrLoginPage.enterPassword("g0lubc0v");
+        habrLoginPage.enterEmail("test@test.com");
+        habrLoginPage.enterPassword("qwerty");
         HabrMainPage habrMainPage1 = habrLoginPage.clickSubmitButton();
         habrMainPage1.checkLogin(true);
     }
@@ -78,8 +78,8 @@ public class HabrTests extends BaseTest {
         HabrMainPage habrMainPage = new HabrMainPage(driver);
         habrMainPage.open();
         HabrLoginPage habrLoginPage = habrMainPage.clickLoginButton();
-        habrLoginPage.enterEmail("golubcov.e@gmail.com");
-        habrLoginPage.enterPassword("g0lubc");
+        habrLoginPage.enterEmail("test@test.com");
+        habrLoginPage.enterPassword("qwer");
         habrLoginPage.clickSubmitButton();
         habrLoginPage.checkErrorLoginPage("Пользователь с такой электронной почтой или паролем не найден");
     }
@@ -89,8 +89,8 @@ public class HabrTests extends BaseTest {
         HabrMainPage habrMainPage = new HabrMainPage(driver);
         habrMainPage.open();
         HabrLoginPage habrLoginPage = habrMainPage.clickLoginButton();
-        habrLoginPage.enterEmail("golubcov.e@gmail.com");
-        habrLoginPage.enterPassword("g0lubc0v");
+        habrLoginPage.enterEmail("test@test.com");
+        habrLoginPage.enterPassword("qwerty");
         HabrMainPage habrMainPage1 = habrLoginPage.clickSubmitButton();
         habrMainPage1.checkLogin(true);
         habrMainPage1.clickUserMenuButton();
@@ -103,8 +103,8 @@ public class HabrTests extends BaseTest {
         HabrMainPage habrMainPage = new HabrMainPage(driver);
         habrMainPage.open();
         HabrLoginPage habrLoginPage = habrMainPage.clickLoginButton();
-        habrLoginPage.enterEmail("golubcov.e@gmail.com");
-        habrLoginPage.enterPassword("g0lubc0v");
+        habrLoginPage.enterEmail("test@test.com");
+        habrLoginPage.enterPassword("qwerty");
         HabrMainPage habrMainPage1 = habrLoginPage.clickSubmitButton();
         habrMainPage1.checkLogin(true);
         habrMainPage1.clickUserMenuButton();
@@ -117,8 +117,8 @@ public class HabrTests extends BaseTest {
         HabrMainPage habrMainPage = new HabrMainPage(driver);
         habrMainPage.open();
         HabrLoginPage habrLoginPage = habrMainPage.clickLoginButton();
-        habrLoginPage.enterEmail("golubcov.e@gmail.com");
-        habrLoginPage.enterPassword("g0lubc0v");
+        habrLoginPage.enterEmail("test@test.com");
+        habrLoginPage.enterPassword("qwerty");
         HabrMainPage habrMainPage1 = habrLoginPage.clickSubmitButton();
         habrMainPage1.checkLogin(true);
         habrMainPage1.clickUserMenuButton();
@@ -131,8 +131,8 @@ public class HabrTests extends BaseTest {
         HabrMainPage habrMainPage = new HabrMainPage(driver);
         habrMainPage.open();
         HabrLoginPage habrLoginPage = habrMainPage.clickLoginButton();
-        habrLoginPage.enterEmail("golubcov.e@gmail.com");
-        habrLoginPage.enterPassword("g0lubc0v");
+        habrLoginPage.enterEmail("test@test.com");
+        habrLoginPage.enterPassword("qwerty");
         HabrMainPage habrMainPage1 = habrLoginPage.clickSubmitButton();
         habrMainPage1.checkLogin(true);
         HabrSandboxPage habrSandboxPage = habrMainPage1.clickSandboxButton();
@@ -144,8 +144,8 @@ public class HabrTests extends BaseTest {
         HabrMainPage habrMainPage = new HabrMainPage(driver);
         habrMainPage.open();
         HabrLoginPage habrLoginPage = habrMainPage.clickLoginButton();
-        habrLoginPage.enterEmail("golubcov.e@gmail.com");
-        habrLoginPage.enterPassword("g0lubc0v");
+        habrLoginPage.enterEmail("test@test.com");
+        habrLoginPage.enterPassword("qwerty");
         HabrMainPage habrMainPage1 = habrLoginPage.clickSubmitButton();
         habrMainPage1.checkLogin(true);
         HabrSandboxPage habrSandboxPage = habrMainPage1.clickSandboxButton();
