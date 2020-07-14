@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.testng.annotations.Test;
 
+import java.net.MalformedURLException;
 import java.util.Random;
 
 @ActiveProfiles("dev")
@@ -74,7 +75,7 @@ public class HabrTests extends BaseTest {
     }
 
     @Test     //test7
-    public void checkErrorLogin() {
+    public void checkErrorLogin() throws MalformedURLException {
         HabrMainPage habrMainPage = new HabrMainPage(driver);
         habrMainPage.open();
         HabrLoginPage habrLoginPage = habrMainPage.clickLoginButton();

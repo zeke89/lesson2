@@ -1,13 +1,15 @@
 package com.zeke.lesson2;
 
-import org.testng.annotations.Test;
 import com.zeke.lesson2.pages.OtusMainPage;
 import com.zeke.lesson2.pages.PersonalCabinetPage;
+import org.testng.annotations.Test;
+
+import java.net.MalformedURLException;
 
 public class PageObjectTest extends BaseTest {
 
     @Test
-    public void checkPersonalCabinetTest() {
+    public void checkPersonalCabinetTest() throws MalformedURLException {
         OtusMainPage otusMainPage = new OtusMainPage(driver);
         otusMainPage.open();
         otusMainPage.clickLoginButton();
