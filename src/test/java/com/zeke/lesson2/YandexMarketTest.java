@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 public class YandexMarketTest {
 
     protected static WebDriver driver;
-    private Logger logger = LogManager.getLogger(SampleTest.class);
+    private final Logger logger = LogManager.getLogger(SampleTest.class);
 
     @BeforeTest
     public void setUp() {
