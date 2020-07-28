@@ -1,24 +1,27 @@
 pipeline {
-   agent {
-       docker {
-           image 'maven'
-       }
-   }
-
+   agent any
+//     {
+//        docker {
+//            image 'maven'
+//        }
+//    }
 
    stages {
       stage('Build') {
          steps {
-            echo "It's Build"
-            git credentialsId: 'cd362a1a-3d32-4e69-85a4-a5543f8ba6b4', url: 'https://github.com/SamVyazemsky/example/'
-            echo "Stop build"
-
+            git 'https://github.com/zeke89/lesson2.git'
          }
       }
       stage('Clean') {
           steps {
              echo "tests execute"
-             sh 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64'
+             sh 'export JAVA_HOME=$(/usr/libexec/java_home)'
+             sh 'wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_mac64.zip -P ~/ '
+             sh 'unzip ~/chromedriver_mac64.zip -d ~/'
+             sh ' rm ~/chromedriver_mac64.zip'
+             sh ' mv -f ~/chromedriver /usr/local/bin/chromedriver '
+             sh 'chown root:root /usr/local/bin/chromedriver '
+             sh 'chmod 0755 /usr/local/bin/chromedriver'
              sh 'mvn clean'
 
           }
@@ -33,6 +36,9 @@ pipeline {
       stage('Results') {
           steps {
              echo "tests execute"
+             sudo apt-add-repository ppa:qameta/allure
+             sudo apt-get update
+             sudo apt-get install allure
              sh "allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]"
 
           }
