@@ -38,7 +38,7 @@ pipeline {
              sh 'sudo apt-add-repository ppa:qameta/allure'
              sh 'sudo apt-get update'
              sh 'sudo apt-get install allure'
-             sh 'allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]''
+             sh \'allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]\'
 
           }
       }
