@@ -10,6 +10,7 @@ pipeline {
       stage('Clean') {
           steps {
              echo "tests execute"
+             sh 'uname -a'
              sh 'export JAVA_HOME=$(/usr/libexec/java_home)'
              sh 'curl -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_mac64.zip -P ~/ '
              sh 'unzip ~/chromedriver_mac64.zip -d ~/'
