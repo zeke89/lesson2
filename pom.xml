@@ -19,6 +19,7 @@
     <properties>
         <java.version>1.8</java.version>
         <aspectj.version>1.8.10</aspectj.version>
+        <suiteXmlFile>testng.xml</suiteXmlFile>
         <base.dir>${project.basedir}</base.dir>
         <maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version>
         <allure-testng.version>2.13.5</allure-testng.version>
@@ -126,6 +127,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                    </suiteXmlFiles>
                     <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>
                     <systemProperties>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
