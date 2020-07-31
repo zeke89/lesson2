@@ -1,10 +1,10 @@
 pipeline {
    agent any
-//     {
-//        docker {
-//            image 'maven'
-//        }
-//    }
+    {
+       docker {
+           image 'maven'
+       }
+   }
 
    stages {
       stage('Build') {
@@ -39,7 +39,6 @@ pipeline {
              sh 'sudo apt-get update'
              sh 'sudo apt-get install allure'
              allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
-
           }
       }
    }
