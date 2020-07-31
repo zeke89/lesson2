@@ -13,7 +13,7 @@ pipeline {
           steps {
              echo "tests execute"
              sh 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64'
-             sh 'wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_mac64.zip -P ~/ '
+             sh 'wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P ~/ '
              sh 'unzip ~/chromedriver_linux64.zip -d ~/'
              sh 'rm ~/chromedriver_linux64.zip'
              sh ' mv -f ~/chromedriver /usr/local/bin/chromedriver '
